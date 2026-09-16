@@ -1,1 +1,3 @@
-document.addEventListener('DOMContentLoaded',()=>{const h=document.querySelector('.site-header'),b=document.querySelector('.menu-toggle');if(h&&b)b.addEventListener('click',()=>h.classList.toggle('menu-open'));});
+const menu=document.querySelector('.menu');
+const links=document.querySelector('.nav-links');
+if(menu) menu.addEventListener('click',()=>links.classList.toggle('open'));

@@ -1,1 +1,1 @@
-Déposer ici les photographies originales validées des œuvres et du site.
+Les blocs visuels sont des emplacements temporaires. Ils seront remplacés par les photographies originales des œuvres de Gianrico.

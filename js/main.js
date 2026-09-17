@@ -1,3 +1,1 @@
-const menu=document.querySelector('.menu');
-const links=document.querySelector('.nav-links');
-if(menu) menu.addEventListener('click',()=>links.classList.toggle('open'));
+const m=document.querySelector('.menu'),l=document.querySelector('.nav-links');if(m)m.onclick=()=>l.classList.toggle('open');

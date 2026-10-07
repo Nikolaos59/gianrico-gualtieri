@@ -30,3 +30,26 @@
   .site-header:has(.main-nav) .languages{margin-left:auto}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+
+/* Boutique: product listing and archive. */
+.shop-content{padding-top:45px}
+.shop-feature{display:grid;grid-template-columns:minmax(300px,.95fr) 1.05fr;gap:clamp(38px,7vw,100px);align-items:center;border-bottom:1px solid var(--line);padding-bottom:80px}
+.shop-image-link{display:block;position:relative;background:#141210;overflow:hidden}
+.shop-image{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .7s ease}
+.shop-image-link:hover .shop-image{transform:scale(1.025)}
+.shop-zoom{position:absolute;right:18px;bottom:18px;display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(230,222,210,.65);background:rgba(17,16,15,.7);color:var(--text);font-size:20px}
+.shop-product-info h2{font-family:"Cinzel",Georgia,serif;font-size:clamp(40px,5vw,65px);margin:14px 0 20px}
+.shop-meta{color:var(--muted);font-size:15px}
+.shop-price{font-size:27px;color:var(--text);margin:26px 0}
+.shop-buy{display:inline-flex;align-items:center;gap:22px;padding:17px 22px;background:var(--gold);color:#171411;text-transform:uppercase;letter-spacing:.12em;font-size:11px;transition:background .2s ease}
+.shop-buy:hover{background:#d0b586}
+.shop-note{max-width:440px;color:var(--muted);font-size:13px;line-height:1.65;margin-top:18px}
+.shop-archive{display:grid;grid-template-columns:.8fr 1.2fr;gap:55px;padding-top:75px}
+.shop-archive h2{font-size:clamp(28px,3.2vw,42px)}
+.sold-grid{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 30px}
+.sold-grid li{border-top:1px solid var(--line);padding:17px 0;display:flex;flex-direction:column;gap:3px}
+.sold-grid li strong{font-weight:400;color:var(--text)}
+.sold-grid li span{font-size:13px;color:var(--muted)}
+.shop-contact{border-top:1px solid var(--line);padding-top:27px;margin-top:65px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.shop-contact p{font-family:"Cinzel",Georgia,serif;font-size:24px}
+@media(max-width:800px){.shop-content{padding-top:20px}.shop-feature,.shop-archive{grid-template-columns:1fr;gap:34px}.shop-feature{padding-bottom:55px}.shop-image-link{max-width:520px}.shop-product-info h2{font-size:42px}.sold-grid{grid-template-columns:1fr}.shop-contact{align-items:flex-start;flex-direction:column;gap:8px}.shop-contact p{margin-bottom:5px}}

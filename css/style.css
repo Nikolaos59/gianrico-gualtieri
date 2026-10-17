@@ -245,3 +245,28 @@
 @media (prefers-reduced-motion: reduce) {
   .mosaic-item { transform: none !important; transition: none !important; }
 }
+
+
+/* Slow, staggered drift: the hovered print pauses and comes forward. */
+@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+  .mosaic-item {
+    animation: atelier-drift 11s ease-in-out infinite alternate;
+    will-change: translate;
+  }
+  .mosaic-wood { animation-duration: 13s; animation-delay: -4s; }
+  .mosaic-red { animation-duration: 10s; animation-delay: -7s; }
+  .mosaic-black { animation-duration: 14s; animation-delay: -2s; }
+  .mosaic-light { animation-duration: 12s; animation-delay: -9s; }
+  .mosaic-ochre { animation-duration: 9s; animation-delay: -5s; }
+  .mosaic-item:hover {
+    animation-play-state: paused;
+    z-index: 100;
+  }
+}
+@keyframes atelier-drift {
+  from { translate: -3px 3px; }
+  to { translate: 4px -4px; }
+}
+@media (max-width: 900px), (prefers-reduced-motion: reduce) {
+  .mosaic-item { animation: none; will-change: auto; }
+}

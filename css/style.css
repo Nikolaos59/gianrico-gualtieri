@@ -109,7 +109,7 @@ footer a:hover { color: var(--gold-soft); }
   padding: 0 30px;
   display: grid;
   grid-template-columns: 1.1fr .72fr .72fr 1fr;
-  grid-template-rows: clamp(150px, 17vw, 245px) clamp(130px, 14vw, 205px);
+  grid-template-rows: clamp(150px, 17vw, 245px) clamp(130px, 14vw, 205px) 86px;
   gap: 12px;
 }
 .mosaic-item { position: relative; min-width: 0; min-height: 0; margin: 0; overflow: hidden; background: #211b16; border: 1px solid rgba(197,165,116,.24); }
@@ -121,13 +121,14 @@ footer a:hover { color: var(--gold-soft); }
 .mosaic-red { grid-column: 4; grid-row: 1; }
 .mosaic-black { grid-column: 3; grid-row: 2; }
 .mosaic-light { grid-column: 4; grid-row: 2; }
-.mosaic-ochre { display: none; }
+.mosaic-ochre { grid-column: 3; grid-row: 3; }
 @media (max-width: 680px) {
-  .atelier-mosaic { margin: 34px auto 56px; padding: 0 16px; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(250px, 68vw) 34vw 34vw; gap: 8px; }
+  .atelier-mosaic { margin: 34px auto 56px; padding: 0 16px; grid-template-columns: 1fr 1fr; grid-template-rows: minmax(250px, 68vw) 34vw 34vw 34vw; gap: 8px; }
   .mosaic-vanitas { grid-column: 1 / 3; grid-row: 1; }
   .mosaic-wood { grid-column: 1; grid-row: 2; }
   .mosaic-red { grid-column: 2; grid-row: 2; }
   .mosaic-black { grid-column: 1; grid-row: 3; }
   .mosaic-light { grid-column: 2; grid-row: 3; }
+  .mosaic-ochre { display: block; grid-column: 1 / 3; grid-row: 4; }
 }
 @media (prefers-reduced-motion: reduce) { .mosaic-item img { transition: none; } }

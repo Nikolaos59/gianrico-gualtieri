@@ -203,3 +203,12 @@
 @media (prefers-reduced-motion: reduce) {
   .mosaic-item img { transition: none; }
 }
+
+
+/* Keep the lead mosaic frame more compact on both homepages. */
+@media (min-width: 901px) {
+  .atelier-mosaic { grid-template-rows: repeat(4, clamp(56px, 5.8vw, 82px)); }
+}
+@media (max-width: 900px) {
+  .atelier-mosaic { grid-template-rows: minmax(190px, 40vw) repeat(3, minmax(105px, 33vw)); }
+}

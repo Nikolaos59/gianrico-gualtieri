@@ -220,3 +220,28 @@
   .hero-inner { padding: 20px 20px 0; }
   .hero h1 { font-size: 34px; }
 }
+
+
+/* Layered studio-print movement on desktop, with calm mobile spacing. */
+@media (min-width: 901px) {
+  .mosaic-item {
+    transition: transform .55s cubic-bezier(.2,.65,.3,1), box-shadow .55s ease;
+  }
+  .mosaic-vanitas { z-index: 1; }
+  .mosaic-wood { z-index: 3; transform: translate(-12px, 10px) rotate(-.6deg); }
+  .mosaic-red { z-index: 4; transform: translate(-14px, -8px) rotate(.7deg); }
+  .mosaic-black { z-index: 3; transform: translate(-10px, 8px) rotate(-.5deg); }
+  .mosaic-light { z-index: 3; transform: translate(12px, -10px) rotate(.7deg); }
+  .mosaic-ochre { z-index: 4; transform: translate(-12px, -8px) rotate(-.5deg); }
+  .mosaic-item:hover {
+    z-index: 10;
+    transform: translateY(-7px) rotate(0) scale(1.015);
+    box-shadow: 0 22px 48px rgba(0,0,0,.42);
+  }
+}
+@media (max-width: 900px) {
+  .mosaic-item { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mosaic-item { transform: none !important; transition: none !important; }
+}

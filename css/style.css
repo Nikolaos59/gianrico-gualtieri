@@ -348,3 +348,17 @@
   .mosaic-lightbox figure { padding: 10px; }
   .mosaic-lightbox img { max-width: calc(96vw - 22px); max-height: 76vh; }
 }
+
+
+/* Let the photo title grow clearly when a collage card is hovered or focused. */
+.mosaic-item figcaption {
+  transition: font-size .18s ease, letter-spacing .18s ease, padding .18s ease, background .18s ease;
+}
+.mosaic-item:hover figcaption,
+.mosaic-item:focus-visible figcaption {
+  padding: 1em .7em .6em;
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  letter-spacing: .025em;
+  line-height: 1.2;
+  background: linear-gradient(transparent, rgba(12,10,8,.94));
+}

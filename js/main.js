@@ -40,7 +40,7 @@ if (menu && links) {
   const swapNextPair = () => {
     if (paused || reducedMotion.matches) return;
     const slotA = slots[step];
-    const slotB = slots[step + 1];
+    const slotB = slots[(step + 1) % slots.length];
     const cardA = mosaic.querySelector('.' + slotA);
     const cardB = mosaic.querySelector('.' + slotB);
     if (!cardA || !cardB) return;
@@ -82,7 +82,7 @@ if (menu && links) {
         card.style.transformOrigin = '';
       });
       mosaic.classList.remove('is-rearranging');
-      step = (step + 1) % (slots.length - 1);
+      step = (step + 1) % slots.length;
       schedule(step === 0 ? 900 : 250);
     }, 760);
   };

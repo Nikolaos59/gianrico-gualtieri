@@ -247,8 +247,8 @@
 }
 
 
-/* Slow, staggered drift: the hovered print pauses and comes forward. */
-@media (min-width: 901px) and (prefers-reduced-motion: no-preference) {
+/* Slow, staggered drift; hover brings a print forward and pauses it. */
+@media (prefers-reduced-motion: no-preference) {
   .mosaic-item {
     animation: atelier-drift 11s ease-in-out infinite alternate;
     will-change: translate;
@@ -258,6 +258,8 @@
   .mosaic-black { animation-duration: 14s; animation-delay: -2s; }
   .mosaic-light { animation-duration: 12s; animation-delay: -9s; }
   .mosaic-ochre { animation-duration: 9s; animation-delay: -5s; }
+}
+@media (min-width: 901px) and (hover: hover) and (prefers-reduced-motion: no-preference) {
   .mosaic-item:hover {
     animation-play-state: paused;
     z-index: 100;
@@ -267,6 +269,13 @@
   from { translate: -3px 3px; }
   to { translate: 4px -4px; }
 }
-@media (max-width: 900px), (prefers-reduced-motion: reduce) {
+@media (max-width: 900px) and (prefers-reduced-motion: no-preference) {
+  .mosaic-item { animation-name: atelier-drift-mobile; animation-duration: 16s; }
+}
+@keyframes atelier-drift-mobile {
+  from { translate: -1.5px 1.5px; }
+  to { translate: 1.5px -1.5px; }
+}
+@media (prefers-reduced-motion: reduce) {
   .mosaic-item { animation: none; will-change: auto; }
 }

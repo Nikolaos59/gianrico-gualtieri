@@ -365,3 +365,10 @@
   line-height: 1.2;
   background: linear-gradient(transparent, rgba(12,10,8,.94));
 }
+
+
+/* Owl material study on the artist pages. */
+.material-study{position:relative;overflow:hidden;padding:0;display:grid;place-items:center;background:#100f0e}
+.material-study img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center}
+.material-study figcaption{position:absolute;z-index:1;left:0;right:0;bottom:0;margin:0;padding:42px 24px 18px;color:#e2cfb3;background:linear-gradient(transparent,rgba(8,7,6,.8));font-size:11px;letter-spacing:.13em;text-transform:uppercase}
+@media(max-width:800px){.material-study{min-height:min(135vw,620px)}}

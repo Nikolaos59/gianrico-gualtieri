@@ -282,3 +282,67 @@
 
 
 .atelier-mosaic.is-rearranging .mosaic-item { animation-play-state: paused; }
+
+
+/* Full-size, uncropped view when a mosaic photograph is selected. */
+.mosaic-item[role="button"] { cursor: zoom-in; }
+.mosaic-item[role="button"]:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+.mosaic-lightbox {
+  position: fixed;
+  width: min(94vw, 1280px);
+  max-width: none;
+  max-height: 94vh;
+  padding: 0;
+  border: 1px solid rgba(184,155,109,.55);
+  background: #11100f;
+  color: var(--text);
+  overflow: visible;
+}
+.mosaic-lightbox::backdrop { background: rgba(7,6,5,.92); }
+.mosaic-lightbox figure {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  margin: 0;
+  padding: 16px;
+}
+.mosaic-lightbox img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: calc(94vw - 34px);
+  max-height: 82vh;
+  object-fit: contain;
+  filter: none;
+  transform: none !important;
+  box-shadow: 0 18px 54px rgba(0,0,0,.55);
+}
+.mosaic-lightbox figcaption {
+  position: static;
+  padding: 0 38px 2px;
+  color: var(--text);
+  background: none;
+  text-align: center;
+}
+.mosaic-lightbox-close {
+  position: absolute;
+  z-index: 2;
+  top: 8px;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(230,222,210,.4);
+  border-radius: 50%;
+  background: rgba(17,16,15,.9);
+  color: var(--text);
+  font-size: 25px;
+  line-height: 1;
+  cursor: pointer;
+}
+@media (max-width: 600px) {
+  .mosaic-lightbox { width: 96vw; }
+  .mosaic-lightbox figure { padding: 10px; }
+  .mosaic-lightbox img { max-width: calc(96vw - 22px); max-height: 76vh; }
+}

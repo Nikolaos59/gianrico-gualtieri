@@ -126,7 +126,7 @@
   margin: clamp(48px, 7vw, 96px) auto;
   padding: 34px 30px 8px;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-template-rows: repeat(4, clamp(72px, 9vw, 126px));
+  grid-template-rows: repeat(6, clamp(72px, 9vw, 126px));
   gap: clamp(8px, 1.15vw, 16px);
   counter-reset: atelier;
 }
@@ -177,12 +177,12 @@
 .mosaic-red { grid-column: 8 / 10; grid-row: 2 / 4; }
 .mosaic-black { grid-column: 10 / 13; grid-row: 2 / 4; }
 .mosaic-light { grid-column: 2 / 5; grid-row: 4 / 5; }
-.mosaic-ochre { grid-column: 5 / 9; grid-row: 4 / 5; }
+.mosaic-ochre { grid-column: 5 / 9; grid-row: 4 / 5; }\n.mosaic-owl { grid-column: 10 / 13; grid-row: 4 / 7; }\n.mosaic-owl img { object-fit: contain; background: #211b16; }
 @media (max-width: 900px) {
   .atelier-mosaic {
     padding: 32px 20px 0;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: minmax(250px, 70vw) repeat(3, minmax(105px, 33vw));
+    grid-template-rows: minmax(250px, 70vw) repeat(3, minmax(105px, 33vw)) minmax(220px, 90vw);
     gap: 8px;
   }
   .atelier-mosaic::before { left: 20px; }
@@ -191,7 +191,7 @@
   .mosaic-red { grid-column: 2 / 3; grid-row: 2 / 3; }
   .mosaic-black { grid-column: 1 / 2; grid-row: 3 / 4; }
   .mosaic-light { grid-column: 2 / 3; grid-row: 3 / 4; }
-  .mosaic-ochre { grid-column: 1 / 3; grid-row: 4 / 5; }
+  .mosaic-ochre { grid-column: 1 / 3; grid-row: 4 / 5; }\n  .mosaic-owl { grid-column: 1 / 3; grid-row: 5 / 6; }
 }
 @media (max-width: 420px) {
   .atelier-mosaic { padding-right: 14px; padding-left: 14px; }

@@ -205,20 +205,18 @@
 }
 
 
-/* Replace full-height opening banners with compact page headings. */
+/* Keep page titles compact and remove the opening banner treatment. */
 .hero {
   min-height: 0;
   align-items: center;
   background: none;
 }
 .hero:after { content: none; }
-.hero-inner { padding: 38px 30px 8px; }
-.hero .kicker { margin: 0; }
-.hero h1 { font-size: clamp(36px, 5vw, 64px); margin: 10px 0; }
-.hero .lead { font-size: clamp(18px, 2.2vw, 26px); }
-.hero .text-link { margin-top: 8px; }
+.hero-inner { padding: 24px 30px 0; }
+.hero .kicker { margin: 0; font-size: 9px; }
+.hero h1 { font-size: clamp(32px, 4vw, 48px); line-height: 1.08; margin: 8px 0 0; }
+.hero .lead, .hero .text-link { display: none; }
 @media (max-width: 800px) {
-  .hero-inner { padding: 28px 20px 6px; }
-  .hero h1 { font-size: clamp(36px, 8vw, 52px); }
-  .hero .lead { font-size: 19px; }
+  .hero-inner { padding: 20px 20px 0; }
+  .hero h1 { font-size: 34px; }
 }

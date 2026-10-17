@@ -279,3 +279,6 @@
 @media (prefers-reduced-motion: reduce) {
   .mosaic-item { animation: none; will-change: auto; }
 }
+
+
+.atelier-mosaic.is-rearranging .mosaic-item { animation-play-state: paused; }

@@ -18,7 +18,7 @@ if (menu && links) {
 }
 
 
-/* Let the five workshop details circulate through the surrounding mosaic slots. */
+/* Move supporting atelier photos one pair at a time around the mosaic. */
 (() => {
   const mosaic = document.querySelector('.atelier-mosaic');
   const slots = ['mosaic-wood', 'mosaic-black', 'mosaic-ochre', 'mosaic-light', 'mosaic-red'];
@@ -30,27 +30,30 @@ if (menu && links) {
 
   let timer;
   let paused = false;
+  let step = 0;
 
-  const schedule = (delay = 6200) => {
+  const schedule = (delay = 250) => {
     window.clearTimeout(timer);
-    if (!paused && !reducedMotion.matches) {
-      timer = window.setTimeout(rotateSlots, delay);
-    }
+    if (!paused && !reducedMotion.matches) timer = window.setTimeout(swapNextPair, delay);
   };
 
-  const rotateSlots = () => {
-    const cards = slots.map((slot) => mosaic.querySelector('.' + slot));
-    const before = new Map(cards.map((card) => [card, card.getBoundingClientRect()]));
-    const oldSlots = cards.map((card, index) => [card, slots[index]]);
+  const swapNextPair = () => {
+    if (paused || reducedMotion.matches) return;
+    const slotA = slots[step];
+    const slotB = slots[step + 1];
+    const cardA = mosaic.querySelector('.' + slotA);
+    const cardB = mosaic.querySelector('.' + slotB);
+    if (!cardA || !cardB) return;
 
     mosaic.classList.add('is-rearranging');
-    oldSlots.forEach(([card, slot], index) => {
-      card.classList.remove(slot);
-      card.classList.add(slots[(index + 1) % slots.length]);
-    });
+    void mosaic.offsetWidth;
+    const beforeA = cardA.getBoundingClientRect();
+    const beforeB = cardB.getBoundingClientRect();
 
-    const moves = cards.map((card) => {
-      const from = before.get(card);
+    cardA.classList.replace(slotA, slotB);
+    cardB.classList.replace(slotB, slotA);
+
+    const moves = [[cardA, beforeA], [cardB, beforeB]].map(([card, from]) => {
       const to = card.getBoundingClientRect();
       const scale = Math.min(from.width / to.width, from.height / to.height);
       const tx = from.left - to.left - (to.width * (1 - scale) / 2);
@@ -61,13 +64,13 @@ if (menu && links) {
       card.style.transition = 'none';
       card.style.transformOrigin = 'center center';
       card.style.transform = start;
-      return { card, start, end };
+      return { card, end };
     });
 
     void mosaic.offsetHeight;
     requestAnimationFrame(() => {
       moves.forEach(({ card, end }) => {
-        card.style.transition = 'transform 1500ms cubic-bezier(.22,.61,.36,1)';
+        card.style.transition = 'transform 700ms cubic-bezier(.22,.61,.36,1)';
         card.style.transform = end;
       });
     });
@@ -79,8 +82,9 @@ if (menu && links) {
         card.style.transformOrigin = '';
       });
       mosaic.classList.remove('is-rearranging');
-      schedule();
-    }, 1650);
+      step = (step + 1) % (slots.length - 1);
+      schedule(step === 0 ? 900 : 250);
+    }, 760);
   };
 
   if (canHover.matches) {
@@ -90,7 +94,7 @@ if (menu && links) {
     });
     mosaic.addEventListener('pointerleave', () => {
       paused = false;
-      schedule(1800);
+      schedule(1100);
     });
   }
 
@@ -101,9 +105,9 @@ if (menu && links) {
       mosaic.classList.remove('is-rearranging');
     } else {
       paused = false;
-      schedule(1800);
+      schedule(1100);
     }
   });
 
-  schedule(3500);
+  schedule(1300);
 })();

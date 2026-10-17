@@ -21,7 +21,7 @@ if (menu && links) {
 /* Move supporting atelier photos one pair at a time around the mosaic. */
 (() => {
   const mosaic = document.querySelector('.atelier-mosaic');
-  const slots = ['mosaic-wood', 'mosaic-black', 'mosaic-ochre', 'mosaic-light', 'mosaic-red'];
+  const slots = ['mosaic-vanitas', 'mosaic-wood', 'mosaic-black', 'mosaic-ochre', 'mosaic-light', 'mosaic-red'];
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const canHover = window.matchMedia('(hover: hover)');
 

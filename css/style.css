@@ -205,8 +205,20 @@
 }
 
 
-/* Compact opening banners across the French and German pages. */
-.hero { min-height: 54vh; }
+/* Replace full-height opening banners with compact page headings. */
+.hero {
+  min-height: 0;
+  align-items: center;
+  background: none;
+}
+.hero:after { content: none; }
+.hero-inner { padding: 38px 30px 8px; }
+.hero .kicker { margin: 0; }
+.hero h1 { font-size: clamp(36px, 5vw, 64px); margin: 10px 0; }
+.hero .lead { font-size: clamp(18px, 2.2vw, 26px); }
+.hero .text-link { margin-top: 8px; }
 @media (max-width: 800px) {
-  .hero { min-height: 52vh; }
+  .hero-inner { padding: 28px 20px 6px; }
+  .hero h1 { font-size: clamp(36px, 8vw, 52px); }
+  .hero .lead { font-size: 19px; }
 }

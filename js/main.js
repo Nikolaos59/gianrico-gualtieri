@@ -52,12 +52,11 @@ if (menu && links) {
     const moves = cards.map((card) => {
       const from = before.get(card);
       const to = card.getBoundingClientRect();
-      const sx = from.width / to.width;
-      const sy = from.height / to.height;
-      const tx = from.left - to.left - (to.width * (1 - sx) / 2);
-      const ty = from.top - to.top - (to.height * (1 - sy) / 2);
+      const scale = Math.min(from.width / to.width, from.height / to.height);
+      const tx = from.left - to.left - (to.width * (1 - scale) / 2);
+      const ty = from.top - to.top - (to.height * (1 - scale) / 2);
       const end = getComputedStyle(card).transform;
-      const start = `translate(${tx}px, ${ty}px) scale(${sx}, ${sy})`;
+      const start = `translate(${tx}px, ${ty}px) scale(${scale})`;
 
       card.style.transition = 'none';
       card.style.transformOrigin = 'center center';

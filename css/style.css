@@ -117,3 +117,89 @@
 .portrait-photo{position:relative;overflow:hidden;padding:0}
 .portrait-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 38%}
 .portrait-photo figcaption{position:relative;z-index:1;width:100%;margin:0;padding:50px 28px 24px;background:linear-gradient(transparent,rgba(8,7,6,.78));color:#e2cfb3;font-size:11px;letter-spacing:.13em;text-transform:uppercase}
+
+
+/* More expressive, asymmetrical atelier collage */
+.atelier-mosaic {
+  position: relative;
+  max-width: 1440px;
+  margin: clamp(48px, 7vw, 96px) auto;
+  padding: 34px 30px 8px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: repeat(4, clamp(72px, 9vw, 126px));
+  gap: clamp(8px, 1.15vw, 16px);
+  counter-reset: atelier;
+}
+.atelier-mosaic::before {
+  content: "Matière · mémoire · temps";
+  position: absolute;
+  top: 0;
+  left: 30px;
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+}
+.mosaic-item {
+  isolation: isolate;
+  border: 0;
+  padding: 7px;
+  background: #211b16;
+  box-shadow: 0 12px 34px rgba(0,0,0,.24);
+  counter-increment: atelier;
+}
+.mosaic-item::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: 7px;
+  border: 1px solid rgba(230,222,210,.18);
+  pointer-events: none;
+}
+.mosaic-item img {
+  filter: saturate(.72) sepia(.08) contrast(1.06);
+  transition: transform .8s cubic-bezier(.2,.65,.3,1), filter .8s ease;
+}
+.mosaic-item:hover img { transform: scale(1.045); filter: saturate(.92) contrast(1.06); }
+.mosaic-item figcaption {
+  z-index: 2;
+  padding: 42px 22px 18px;
+  font-size: 10px;
+  letter-spacing: .08em;
+}
+.mosaic-item figcaption::before {
+  content: "0" counter(atelier) "  /  ";
+  color: #d2b98f;
+  letter-spacing: .16em;
+}
+.mosaic-vanitas { grid-column: 1 / 8; grid-row: 1 / 4; }
+.mosaic-wood { grid-column: 9 / 12; grid-row: 1 / 2; }
+.mosaic-red { grid-column: 8 / 10; grid-row: 2 / 4; }
+.mosaic-black { grid-column: 10 / 13; grid-row: 2 / 4; }
+.mosaic-light { grid-column: 2 / 5; grid-row: 4 / 5; }
+.mosaic-ochre { grid-column: 5 / 9; grid-row: 4 / 5; }
+@media (max-width: 900px) {
+  .atelier-mosaic {
+    padding: 32px 20px 0;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: minmax(250px, 70vw) repeat(3, minmax(105px, 33vw));
+    gap: 8px;
+  }
+  .atelier-mosaic::before { left: 20px; }
+  .mosaic-vanitas { grid-column: 1 / 3; grid-row: 1 / 2; }
+  .mosaic-wood { grid-column: 1 / 2; grid-row: 2 / 3; }
+  .mosaic-red { grid-column: 2 / 3; grid-row: 2 / 3; }
+  .mosaic-black { grid-column: 1 / 2; grid-row: 3 / 4; }
+  .mosaic-light { grid-column: 2 / 3; grid-row: 3 / 4; }
+  .mosaic-ochre { grid-column: 1 / 3; grid-row: 4 / 5; }
+}
+@media (max-width: 420px) {
+  .atelier-mosaic { padding-right: 14px; padding-left: 14px; }
+  .atelier-mosaic::before { left: 14px; }
+  .mosaic-item { padding: 5px; }
+  .mosaic-item::after { inset: 5px; }
+  .mosaic-item figcaption { padding: 32px 12px 12px; font-size: 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mosaic-item img { transition: none; }
+}

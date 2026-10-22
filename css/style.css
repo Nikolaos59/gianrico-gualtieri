@@ -406,3 +406,14 @@
 .hero.home-hero .hero-inner{padding:24px 30px 0}
 .atelier-mosaic{margin-top:20px}
 @media(max-width:800px){.hero.home-hero .hero-inner{padding:20px 20px 0}}
+
+
+/* Clear first-screen paths for art discovery and purchase. */
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:30px}
+.button{display:inline-flex;min-height:48px;align-items:center;justify-content:center;padding:12px 20px;border:1px solid var(--gold);font-family:Georgia,"Times New Roman",serif;font-size:12px;letter-spacing:.08em;text-align:center;transition:background-color .2s ease,color .2s ease,border-color .2s ease}
+.button-primary{background:var(--gold);color:#171411}
+.button-primary:hover{background:#d0b586;border-color:#d0b586}
+.button-secondary{color:var(--text)}
+.button-secondary:hover{background:rgba(184,155,109,.14);color:#f1e8da}
+.button:focus-visible{outline:2px solid var(--text);outline-offset:4px}
+@media(max-width:520px){.hero-actions{align-items:stretch;flex-direction:column;max-width:360px}.hero-actions .button{width:100%}}

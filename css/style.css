@@ -436,9 +436,9 @@
 .atelier-additions-head h2{font-size:clamp(28px,3.5vw,42px);margin:0}
 .atelier-additions-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 .atelier-addition{min-width:0;margin:0;background:var(--bg2);border:1px solid var(--line)}
-.atelier-addition img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.atelier-addition img{display:block;width:100%;height:clamp(180px,20vw,270px);aspect-ratio:4/3;object-fit:cover}
 .atelier-addition--featured{grid-column:span 2}
-.atelier-addition--featured img{aspect-ratio:3/2;object-fit:contain;background:#0d0c0b}
+.atelier-addition--featured img{height:clamp(260px,32vw,400px);aspect-ratio:3/2;object-fit:contain;background:#0d0c0b}
 .atelier-addition figcaption{padding:10px 12px;color:var(--muted);font-size:12px;letter-spacing:.05em}
 @media(max-width:900px){.atelier-additions-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
-@media(max-width:520px){.atelier-additions{padding:20px 16px 58px}.atelier-additions-grid{gap:8px}.atelier-addition figcaption{padding:8px;font-size:11px}}
+@media(max-width:520px){.atelier-additions{padding:20px 16px 58px}.atelier-additions-grid{gap:8px}.atelier-addition img{height:150px}.atelier-addition--featured img{height:220px}.atelier-addition figcaption{padding:8px;font-size:11px}}

@@ -427,3 +427,18 @@
   .nav-links a.language-option{flex-direction:row;justify-content:flex-start;gap:8px;min-width:0;min-height:0;line-height:1.4}
   .nav-links a.language-option .language-flag{position:static;order:-1;transform:none;width:20px;height:14px;opacity:1}
 }
+
+
+/* Additional user-provided atelier photographs. */
+.atelier-additions{padding-top:30px;padding-bottom:88px}
+.atelier-additions-head{margin:0 0 24px}
+.atelier-additions-head .eyebrow{margin:0 0 8px}
+.atelier-additions-head h2{font-size:clamp(28px,3.5vw,42px);margin:0}
+.atelier-additions-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.atelier-addition{min-width:0;margin:0;background:var(--bg2);border:1px solid var(--line)}
+.atelier-addition img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover}
+.atelier-addition--featured{grid-column:span 2}
+.atelier-addition--featured img{aspect-ratio:3/2;object-fit:contain;background:#0d0c0b}
+.atelier-addition figcaption{padding:10px 12px;color:var(--muted);font-size:12px;letter-spacing:.05em}
+@media(max-width:900px){.atelier-additions-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+@media(max-width:520px){.atelier-additions{padding:20px 16px 58px}.atelier-additions-grid{gap:8px}.atelier-addition figcaption{padding:8px;font-size:11px}}

@@ -417,3 +417,11 @@
 .button-secondary:hover{background:rgba(184,155,109,.14);color:#f1e8da}
 .button:focus-visible{outline:2px solid var(--text);outline-offset:4px}
 @media(max-width:520px){.hero-actions{align-items:stretch;flex-direction:column;max-width:360px}.hero-actions .button{width:100%}}
+
+/* Language flags: below the code on desktop, beside it in the mobile menu. */
+.nav-links a.language-option{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;line-height:1}
+.language-flag{display:block;font-size:15px;line-height:1}
+@media(max-width:800px){
+  .nav-links a.language-option{flex-direction:row;justify-content:flex-start;gap:8px;line-height:1.4}
+  .nav-links a.language-option .language-flag{order:-1;font-size:16px}
+}

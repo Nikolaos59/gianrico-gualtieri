@@ -442,3 +442,37 @@
 .atelier-addition figcaption{padding:10px 12px;color:var(--muted);font-size:12px;letter-spacing:.05em}
 @media(max-width:900px){.atelier-additions-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
 @media(max-width:520px){.atelier-additions{padding:20px 16px 58px}.atelier-additions-grid{gap:8px}.atelier-addition img{height:150px}.atelier-addition--featured img{height:220px}.atelier-addition figcaption{padding:8px;font-size:11px}}
+
+
+/* Keep all 13 distinct atelier photographs together in the home mosaic. */
+.atelier-mosaic{grid-template-rows:repeat(9,clamp(72px,9vw,126px))}
+.mosaic-vanitas{grid-column:1/8;grid-row:1/4}
+.mosaic-wood{grid-column:9/12;grid-row:1/2}
+.mosaic-red{grid-column:8/10;grid-row:2/4}
+.mosaic-black{grid-column:10/13;grid-row:2/4}
+.mosaic-light{grid-column:2/5;grid-row:4/5}
+.mosaic-ochre{grid-column:5/9;grid-row:4/5}
+.mosaic-extra{grid-column:10/13;grid-row:4/7}
+.mosaic-extra img{object-fit:cover}
+.mosaic-archive-skull{grid-column:1/5;grid-row:8/9}
+.mosaic-archive-wood{grid-column:5/9;grid-row:8/9}
+.mosaic-archive-red{grid-column:9/13;grid-row:8/9}
+.mosaic-archive-black{grid-column:1/5;grid-row:9/10}
+.mosaic-archive-light{grid-column:5/9;grid-row:9/10}
+.mosaic-archive-ochre{grid-column:9/13;grid-row:9/10}
+@media(max-width:900px){
+  .atelier-mosaic{grid-template-rows:minmax(250px,70vw) repeat(6,minmax(105px,33vw))}
+  .mosaic-vanitas{grid-column:1/3;grid-row:1/2}
+  .mosaic-wood{grid-column:1/2;grid-row:2/3}
+  .mosaic-red{grid-column:2/3;grid-row:2/3}
+  .mosaic-black{grid-column:1/2;grid-row:3/4}
+  .mosaic-light{grid-column:2/3;grid-row:3/4}
+  .mosaic-ochre{grid-column:1/2;grid-row:4/5}
+  .mosaic-extra{grid-column:2/3;grid-row:4/5}
+  .mosaic-archive-skull{grid-column:1/2;grid-row:5/6}
+  .mosaic-archive-wood{grid-column:2/3;grid-row:5/6}
+  .mosaic-archive-red{grid-column:1/2;grid-row:6/7}
+  .mosaic-archive-black{grid-column:2/3;grid-row:6/7}
+  .mosaic-archive-light{grid-column:1/2;grid-row:7/8}
+  .mosaic-archive-ochre{grid-column:2/3;grid-row:7/8}
+}

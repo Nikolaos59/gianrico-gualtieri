@@ -664,3 +664,16 @@
  .mosaic-zone .mosaic-item figcaption,.mosaic-zone .mosaic-item:hover figcaption,.mosaic-zone .mosaic-item:focus-visible figcaption{font-size:10px}
 }
 @media(prefers-reduced-motion:reduce){.mosaic-zone .mosaic-item figcaption{transition:none}}
+
+
+/* Hover reveals a larger, uncropped photograph and a readable caption. */
+@media (hover:hover) and (min-width:801px){
+ .atelier-mosaic .mosaic-item:hover{z-index:40;transform:scale(1.38) rotate(0deg);box-shadow:0 24px 54px rgba(0,0,0,.55)}
+ .atelier-mosaic .mosaic-item:hover img{object-fit:contain;background:#181512;transform:none;filter:none}
+ .atelier-mosaic .mosaic-item:hover figcaption{left:14px;bottom:12px;max-width:calc(100% - 28px);padding:9px 13px;font-size:15px;transform:rotate(-1deg) scale(1.08);box-shadow:2px 5px 12px rgba(0,0,0,.4)}
+}
+@media(max-width:800px){
+ .atelier-mosaic .mosaic-item:focus-visible{z-index:40;transform:scale(1.16);box-shadow:0 18px 38px rgba(0,0,0,.5)}
+ .atelier-mosaic .mosaic-item:focus-visible img{object-fit:contain;background:#181512;transform:none;filter:none}
+ .mosaic-zone .mosaic-item:hover figcaption,.mosaic-zone .mosaic-item:focus-visible figcaption{font-size:12px;padding:7px 10px}
+}

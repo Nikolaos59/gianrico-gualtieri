@@ -476,3 +476,37 @@
   .mosaic-archive-light{grid-column:1/2;grid-row:7/8}
   .mosaic-archive-ochre{grid-column:2/3;grid-row:7/8}
 }
+
+/* Two clear, generously sized photo mosaics. */
+.atelier-mosaic{display:block;max-width:var(--max);margin:32px auto 76px;padding:0 30px}
+.atelier-mosaic::before{content:none}
+.mosaic-zone-title{margin:0 0 16px;color:var(--gold);font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase}
+.mosaic-zone-title-secondary{margin-top:38px}
+.mosaic-zone{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:clamp(100px,12vw,160px);gap:12px}
+.mosaic-zone-main .mosaic-vanitas{grid-column:1/8;grid-row:1/3}
+.mosaic-zone-main .mosaic-wood{grid-column:8/10;grid-row:1}
+.mosaic-zone-main .mosaic-red{grid-column:10/13;grid-row:1}
+.mosaic-zone-main .mosaic-black{grid-column:8/10;grid-row:2}
+.mosaic-zone-main .mosaic-light{grid-column:10/13;grid-row:2}
+.mosaic-zone-main .mosaic-ochre{grid-column:1/4;grid-row:3}
+.mosaic-zone-main .mosaic-extra{grid-column:4/13;grid-row:3}
+.mosaic-zone-studio{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:clamp(170px,20vw,250px)}
+.mosaic-zone-studio .mosaic-item{grid-column:auto;grid-row:auto}
+.mosaic-zone-studio .mosaic-item img{object-fit:cover}
+.mosaic-zone .mosaic-item{min-height:0}
+@media(max-width:800px){
+ .atelier-mosaic{margin:26px auto 56px;padding:0 20px}
+ .mosaic-zone{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:clamp(130px,34vw,220px);gap:8px}
+ .mosaic-zone-main .mosaic-vanitas{grid-column:1/3;grid-row:1}
+ .mosaic-zone-main .mosaic-item{grid-column:auto;grid-row:auto}
+ .mosaic-zone-main .mosaic-vanitas{grid-column:1/3}
+ .mosaic-zone-main .mosaic-ochre{grid-column:auto}
+ .mosaic-zone-main .mosaic-extra{grid-column:auto}
+ .mosaic-zone-studio{grid-auto-rows:clamp(150px,45vw,230px)}
+ .mosaic-zone-title-secondary{margin-top:30px}
+}
+@media(max-width:420px){
+ .atelier-mosaic{padding-right:14px;padding-left:14px}
+ .mosaic-zone{grid-auto-rows:clamp(120px,38vw,190px);gap:7px}
+ .mosaic-zone-studio{grid-auto-rows:clamp(140px,46vw,205px)}
+}

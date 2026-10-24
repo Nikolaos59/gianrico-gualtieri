@@ -655,3 +655,12 @@
  .atelier-mosaic .mosaic-vanitas,.atelier-mosaic .mosaic-archive-skull{grid-column:1/3;grid-row:auto}
  .atelier-mosaic .mosaic-wood,.atelier-mosaic .mosaic-red,.atelier-mosaic .mosaic-black,.atelier-mosaic .mosaic-light,.atelier-mosaic .mosaic-ochre,.atelier-mosaic .mosaic-extra,.atelier-mosaic .mosaic-archive-wood,.atelier-mosaic .mosaic-archive-red,.atelier-mosaic .mosaic-archive-black,.atelier-mosaic .mosaic-archive-light,.atelier-mosaic .mosaic-archive-ochre{grid-column:auto;grid-row:auto}
 }
+
+
+/* Let a print caption grow subtly on hover or keyboard focus. */
+.mosaic-zone .mosaic-item figcaption{transform:rotate(-1deg) scale(1);transform-origin:left bottom;transition:transform .2s ease,box-shadow .2s ease;font-size:11px}
+.mosaic-zone .mosaic-item:hover figcaption,.mosaic-zone .mosaic-item:focus-visible figcaption{transform:rotate(-1deg) scale(1.14);box-shadow:2px 4px 9px rgba(0,0,0,.35);font-size:11px}
+@media(max-width:800px){
+ .mosaic-zone .mosaic-item figcaption,.mosaic-zone .mosaic-item:hover figcaption,.mosaic-zone .mosaic-item:focus-visible figcaption{font-size:10px}
+}
+@media(prefers-reduced-motion:reduce){.mosaic-zone .mosaic-item figcaption{transition:none}}

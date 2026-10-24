@@ -625,3 +625,8 @@
  .mosaic-zone-main .mosaic-vanitas,.mosaic-zone-studio .mosaic-archive-skull{grid-column:1/3;grid-row:auto}
  .mosaic-zone .mosaic-item{grid-column:auto;grid-row:auto;transform:none}
 }
+
+
+/* Keep one caption for the blended composition. */
+.atelier-mosaic>.mosaic-zone-title{display:flex;margin:0 0 12px;padding:0 0 6px;color:#e6ded2;font:italic clamp(21px,2.5vw,32px)/1.3 Georgia,"Times New Roman",serif;letter-spacing:0;text-transform:none;border:0}
+.atelier-mosaic>.mosaic-zone-title::before{content:"";width:30px;height:3px;background:linear-gradient(90deg,#8c3f31,#bc9a62);transform:rotate(-3deg)}

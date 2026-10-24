@@ -705,3 +705,13 @@
  .atelier-mosaic .mosaic-item:focus-visible::after{display:none!important}
  .atelier-mosaic .mosaic-item:focus-visible img{box-shadow:0 14px 28px rgba(0,0,0,.45)}
 }
+
+
+/* Preserve each original photograph's proportions in every rotating slot. */
+.atelier-mosaic .mosaic-item img{object-fit:contain!important;object-position:center;background:transparent!important}
+@media (hover:hover) and (min-width:801px){
+ .atelier-mosaic .mosaic-item:hover img{object-fit:contain!important;background:transparent!important}
+}
+@media(max-width:800px){
+ .atelier-mosaic .mosaic-item:focus-visible img{object-fit:contain!important;background:transparent!important}
+}

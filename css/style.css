@@ -692,3 +692,16 @@
  .atelier-mosaic .mosaic-item:focus-visible::after{z-index:3}
  .atelier-mosaic .mosaic-item:focus-visible figcaption{z-index:4}
 }
+
+
+/* Remove the print mount entirely while its photograph is enlarged. */
+@media (hover:hover) and (min-width:801px){
+ .atelier-mosaic .mosaic-item:hover{padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important;outline:0!important}
+ .atelier-mosaic .mosaic-item:hover::after{display:none!important}
+ .atelier-mosaic .mosaic-item:hover img{box-shadow:0 18px 38px rgba(0,0,0,.5)}
+}
+@media(max-width:800px){
+ .atelier-mosaic .mosaic-item:focus-visible{padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important}
+ .atelier-mosaic .mosaic-item:focus-visible::after{display:none!important}
+ .atelier-mosaic .mosaic-item:focus-visible img{box-shadow:0 14px 28px rgba(0,0,0,.45)}
+}

@@ -18,6 +18,98 @@ if (menu && links) {
 }
 
 
+
+/* Slowly rotate photographs through the mixed mosaic positions. */
+(() => {
+  const mosaic = document.querySelector('.atelier-mosaic');
+  const slots = [
+    'mosaic-vanitas', 'mosaic-archive-skull',
+    'mosaic-wood', 'mosaic-red', 'mosaic-black', 'mosaic-light', 'mosaic-ochre', 'mosaic-extra',
+    'mosaic-archive-wood', 'mosaic-archive-red', 'mosaic-archive-black', 'mosaic-archive-light', 'mosaic-archive-ochre'
+  ];
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (!mosaic || reducedMotion.matches || slots.some(name => !mosaic.querySelector('.' + name))) return;
+
+  let timer;
+  let paused = false;
+  let step = 0;
+  const heroSlots = slots.slice(0, 2);
+  const detailSlots = slots.slice(2);
+
+  const schedule = (delay = 3600) => {
+    window.clearTimeout(timer);
+    if (!paused && !reducedMotion.matches && !document.hidden) timer = window.setTimeout(swapNextPair, delay);
+  };
+
+  const swap = (slotA, slotB) => {
+    const cardA = mosaic.querySelector('.' + slotA);
+    const cardB = mosaic.querySelector('.' + slotB);
+    if (!cardA || !cardB) return;
+
+    const beforeA = cardA.getBoundingClientRect();
+    const beforeB = cardB.getBoundingClientRect();
+    mosaic.classList.add('is-rearranging');
+    cardA.classList.replace(slotA, slotB);
+    cardB.classList.replace(slotB, slotA);
+
+    const moves = [[cardA, beforeA], [cardB, beforeB]].map(([card, before]) => {
+      const after = card.getBoundingClientRect();
+      const scale = Math.min(before.width / after.width, before.height / after.height);
+      const x = before.left - after.left - after.width * (1 - scale) / 2;
+      const y = before.top - after.top - after.height * (1 - scale) / 2;
+      const end = getComputedStyle(card).transform;
+      card.style.transition = 'none';
+      card.style.transformOrigin = 'center';
+      card.style.transform = `translate(${x}px,${y}px) scale(${scale})`;
+      return { card, end };
+    });
+
+    void mosaic.offsetHeight;
+    requestAnimationFrame(() => moves.forEach(({ card, end }) => {
+      card.style.transition = 'transform 800ms cubic-bezier(.22,.61,.36,1)';
+      card.style.transform = end;
+    }));
+
+    window.setTimeout(() => {
+      moves.forEach(({ card }) => {
+        card.style.transform = '';
+        card.style.transition = '';
+        card.style.transformOrigin = '';
+      });
+      mosaic.classList.remove('is-rearranging');
+      schedule();
+    }, 850);
+  };
+
+  const swapNextPair = () => {
+    if (paused || reducedMotion.matches || document.hidden) return;
+    if (step % 5 === 0) {
+      swap(heroSlots[0], heroSlots[1]);
+    } else {
+      const index = (step - 1) % detailSlots.length;
+      swap(detailSlots[index], detailSlots[(index + 1) % detailSlots.length]);
+    }
+    step += 1;
+  };
+
+  const pause = () => { paused = true; window.clearTimeout(timer); };
+  const resume = () => { paused = false; schedule(1100); };
+  mosaic.addEventListener('pointerenter', pause);
+  mosaic.addEventListener('pointerleave', resume);
+  mosaic.addEventListener('focusin', pause);
+  mosaic.addEventListener('focusout', event => {
+    if (!mosaic.contains(event.relatedTarget)) resume();
+  });
+  mosaic.addEventListener('mosaic:pause', pause);
+  mosaic.addEventListener('mosaic:resume', resume);
+  document.addEventListener('visibilitychange', () => document.hidden ? pause() : resume());
+  reducedMotion.addEventListener('change', event => {
+    if (event.matches) pause();
+    else resume();
+  });
+  schedule(2200);
+})();
+
 /* Open workshop photographs in an accessible full-size lightbox. */
 (() => {
   const mosaic = document.querySelector('.atelier-mosaic');

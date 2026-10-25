@@ -777,3 +777,10 @@
  .atelier-mosaic .mosaic-item.mosaic-preview-active{padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important}
  .atelier-mosaic .mosaic-item.mosaic-preview-active::after{display:none!important}
 }
+
+
+/* Assign the last studio detail its own cell beside the ochre study. */
+@media(min-width:801px){
+ .atelier-mosaic .mosaic-archive-ochre{grid-column:1/4;grid-row:6/7}
+ .atelier-mosaic .mosaic-extra{grid-column:4/8;grid-row:6/7}
+}

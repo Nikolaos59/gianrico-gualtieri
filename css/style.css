@@ -682,13 +682,13 @@
 /* Zoom the photograph beyond its fixed frame, without enlarging the card. */
 @media (hover:hover) and (min-width:801px){
  .atelier-mosaic .mosaic-item:hover{overflow:visible;transform:rotate(0deg);background:transparent;box-shadow:0 14px 30px rgba(0,0,0,.22)}
- .atelier-mosaic .mosaic-item:hover img{position:relative;z-index:2;object-fit:cover;background:transparent;transform:scale(1.34);filter:none}
+ .atelier-mosaic .mosaic-item:hover img{position:relative;z-index:2;object-fit:cover;background:transparent;transform:scale(1.6);filter:none}
  .atelier-mosaic .mosaic-item:hover::after{z-index:3;pointer-events:none}
  .atelier-mosaic .mosaic-item:hover figcaption{z-index:4}
 }
 @media(max-width:800px){
  .atelier-mosaic .mosaic-item:focus-visible{overflow:visible;transform:none;background:transparent}
- .atelier-mosaic .mosaic-item:focus-visible img{position:relative;z-index:2;object-fit:cover;background:transparent;transform:scale(1.22);filter:none}
+ .atelier-mosaic .mosaic-item:focus-visible img{position:relative;z-index:2;object-fit:cover;background:transparent;transform:scale(1.38);filter:none}
  .atelier-mosaic .mosaic-item:focus-visible::after{z-index:3}
  .atelier-mosaic .mosaic-item:focus-visible figcaption{z-index:4}
 }

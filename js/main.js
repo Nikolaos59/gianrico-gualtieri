@@ -33,10 +33,7 @@ if (menu && links) {
   let timer;
   let paused = false;
   let step = 0;
-  const heroSlots = slots.slice(0, 2);
-  const detailSlots = slots.slice(2);
-
-  const schedule = (delay = 3600) => {
+  const schedule = (delay = 2800) => {
     window.clearTimeout(timer);
     if (!paused && !reducedMotion.matches && !document.hidden) timer = window.setTimeout(swapNextPair, delay);
   };
@@ -83,12 +80,8 @@ if (menu && links) {
 
   const swapNextPair = () => {
     if (paused || reducedMotion.matches || document.hidden) return;
-    if (step % 5 === 0) {
-      swap(heroSlots[0], heroSlots[1]);
-    } else {
-      const index = (step - 1) % detailSlots.length;
-      swap(detailSlots[index], detailSlots[(index + 1) % detailSlots.length]);
-    }
+    const index = step % (slots.length - 1);
+    swap(slots[index], slots[index + 1]);
     step += 1;
   };
 

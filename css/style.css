@@ -759,20 +759,14 @@
 }
 
 
-/* Center the hovered photo in the viewport at its largest uncropped size. */
+/* Stable centered preview, detached from the hovered mosaic card. */
 @media (hover:hover) and (min-width:801px){
- .atelier-mosaic .mosaic-item:hover{z-index:1000;transform:none!important;overflow:visible}
- .atelier-mosaic .mosaic-item:hover img{
-  position:fixed!important;left:50%!important;top:50%!important;right:auto!important;bottom:auto!important;
-  width:min(92vw,1500px)!important;height:min(78vh,1100px)!important;max-width:92vw!important;max-height:78vh!important;
-  margin:0!important;object-fit:contain!important;object-position:center!important;
-  transform:translate(-50%,-50%)!important;background:transparent!important;
-  z-index:1001;box-shadow:0 24px 80px rgba(0,0,0,.72);filter:none!important
- }
- .atelier-mosaic .mosaic-item:hover figcaption{
-  position:fixed!important;left:50%!important;right:auto!important;bottom:3vh!important;top:auto!important;
-  width:max-content;max-width:min(90vw,700px);z-index:1002;
-  transform:translateX(-50%) rotate(-1deg) scale(1.08)!important;
-  box-shadow:2px 5px 14px rgba(0,0,0,.45)
- }
+ .atelier-mosaic .mosaic-item:hover img{position:relative!important;left:auto!important;top:auto!important;right:auto!important;bottom:auto!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;transform:none!important;box-shadow:none!important}
+ .atelier-mosaic .mosaic-item:hover figcaption{position:absolute!important;left:14px!important;right:auto!important;top:auto!important;bottom:12px!important;width:max-content;max-width:calc(100% - 28px);transform:rotate(-1deg) scale(1.08)!important}
+ .mosaic-hover-preview{position:fixed;inset:0;z-index:1500;display:grid;place-items:center;padding:4vh 4vw;background:rgba(12,10,8,.88);pointer-events:none;animation:mosaic-preview-in .18s ease-out both}
+ .mosaic-hover-preview figure{display:flex;flex-direction:column;align-items:center;gap:14px;max-width:92vw;max-height:92vh;margin:0}
+ .mosaic-hover-preview img{display:block;width:auto;height:auto;max-width:90vw;max-height:78vh;object-fit:contain;object-position:center;box-shadow:0 24px 80px rgba(0,0,0,.7)}
+ .mosaic-hover-preview figcaption{position:static;inset:auto;width:max-content;max-width:90vw;margin:0;padding:7px 12px;color:#27221c;background:#d9c69f;box-shadow:2px 4px 10px rgba(0,0,0,.3);font:italic 15px/1.3 Georgia,"Times New Roman",serif;text-align:center}
 }
+@keyframes mosaic-preview-in{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.mosaic-hover-preview{animation:none}}

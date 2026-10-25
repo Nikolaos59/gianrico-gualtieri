@@ -110,18 +110,27 @@ if (menu && links) {
   schedule(2200);
 })();
 
-/* Show a viewport-centered preview without moving the source photo. */
+/* Show one viewport-centered preview and hide its source thumbnail. */
 (() => {
   const mosaic = document.querySelector('.atelier-mosaic');
   const desktopHover = window.matchMedia('(hover:hover) and (min-width:801px)');
   if (!mosaic || !desktopHover.matches) return;
 
+  let activeCard = null;
+  const closePreview = () => {
+    activeCard?.classList.remove('mosaic-preview-active');
+    activeCard = null;
+    document.querySelector('.mosaic-hover-preview')?.remove();
+  };
+
   mosaic.querySelectorAll('.mosaic-item').forEach((card) => {
     card.addEventListener('pointerenter', (event) => {
       if (event.pointerType === 'touch') return;
-      document.querySelector('.mosaic-hover-preview')?.remove();
       const source = card.querySelector('img');
       if (!source) return;
+      closePreview();
+      activeCard = card;
+      activeCard.classList.add('mosaic-preview-active');
       const preview = document.createElement('div');
       preview.className = 'mosaic-hover-preview';
       preview.setAttribute('aria-hidden', 'true');
@@ -137,9 +146,7 @@ if (menu && links) {
       document.body.append(preview);
     });
   });
-  mosaic.addEventListener('pointerleave', () => {
-    document.querySelector('.mosaic-hover-preview')?.remove();
-  });
+  mosaic.addEventListener('pointerleave', closePreview);
 })();
 
 /* Open workshop photographs in an accessible full-size lightbox. */

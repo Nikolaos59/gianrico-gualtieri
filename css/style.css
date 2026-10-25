@@ -757,3 +757,22 @@
  .atelier-mosaic .mosaic-archive-skull{grid-column:8/13;grid-row:4/7;transform:rotate(.35deg)}
  .atelier-mosaic .mosaic-item:hover{transform:rotate(0deg)}
 }
+
+
+/* Center the hovered photo in the viewport at its largest uncropped size. */
+@media (hover:hover) and (min-width:801px){
+ .atelier-mosaic .mosaic-item:hover{z-index:1000;transform:none!important;overflow:visible}
+ .atelier-mosaic .mosaic-item:hover img{
+  position:fixed!important;left:50%!important;top:50%!important;right:auto!important;bottom:auto!important;
+  width:min(92vw,1500px)!important;height:min(86vh,1100px)!important;max-width:92vw!important;max-height:86vh!important;
+  margin:0!important;object-fit:contain!important;object-position:center!important;
+  transform:translate(-50%,-50%)!important;background:transparent!important;
+  z-index:1001;box-shadow:0 24px 80px rgba(0,0,0,.72);filter:none!important
+ }
+ .atelier-mosaic .mosaic-item:hover figcaption{
+  position:fixed!important;left:50%!important;right:auto!important;bottom:3vh!important;top:auto!important;
+  width:max-content;max-width:min(90vw,700px);z-index:1002;
+  transform:translateX(-50%) rotate(-1deg) scale(1.08)!important;
+  box-shadow:2px 5px 14px rgba(0,0,0,.45)
+ }
+}

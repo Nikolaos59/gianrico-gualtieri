@@ -103,17 +103,36 @@ if (menu && links) {
   schedule(2200);
 })();
 
-/* Show one viewport-centered preview and hide its source thumbnail. */
+/* Show one viewport-centered preview after a deliberate hover pause. */
 (() => {
   const mosaic = document.querySelector('.atelier-mosaic');
   const desktopHover = window.matchMedia('(hover:hover) and (min-width:801px)');
   if (!mosaic || !desktopHover.matches) return;
 
   let activeCard = null;
+  let pendingTimer = 0;
   const closePreview = () => {
     activeCard?.classList.remove('mosaic-preview-active');
     activeCard = null;
     document.querySelector('.mosaic-hover-preview')?.remove();
+  };
+  const showPreview = (card, source) => {
+    if (!card.matches(':hover')) return;
+    activeCard = card;
+    card.classList.add('mosaic-preview-active');
+    const preview = document.createElement('div');
+    preview.className = 'mosaic-hover-preview';
+    preview.setAttribute('aria-hidden', 'true');
+    const figure = document.createElement('figure');
+    const image = source.cloneNode(false);
+    image.src = source.currentSrc || source.src;
+    image.removeAttribute('srcset');
+    image.removeAttribute('loading');
+    const caption = document.createElement('figcaption');
+    caption.textContent = card.querySelector('figcaption')?.textContent.trim() || source.alt;
+    figure.append(image, caption);
+    preview.append(figure);
+    document.body.append(preview);
   };
 
   mosaic.querySelectorAll('.mosaic-item').forEach((card) => {
@@ -121,25 +140,19 @@ if (menu && links) {
       if (event.pointerType === 'touch') return;
       const source = card.querySelector('img');
       if (!source) return;
+      window.clearTimeout(pendingTimer);
       closePreview();
-      activeCard = card;
-      activeCard.classList.add('mosaic-preview-active');
-      const preview = document.createElement('div');
-      preview.className = 'mosaic-hover-preview';
-      preview.setAttribute('aria-hidden', 'true');
-      const figure = document.createElement('figure');
-      const image = source.cloneNode(false);
-      image.src = source.currentSrc || source.src;
-      image.removeAttribute('srcset');
-      image.removeAttribute('loading');
-      const caption = document.createElement('figcaption');
-      caption.textContent = card.querySelector('figcaption')?.textContent.trim() || source.alt;
-      figure.append(image, caption);
-      preview.append(figure);
-      document.body.append(preview);
+      pendingTimer = window.setTimeout(() => {
+        pendingTimer = 0;
+        showPreview(card, source);
+      }, 1000);
     });
   });
-  mosaic.addEventListener('pointerleave', closePreview);
+  mosaic.addEventListener('pointerleave', () => {
+    window.clearTimeout(pendingTimer);
+    pendingTimer = 0;
+    closePreview();
+  });
 })();
 
 /* Open workshop photographs in an accessible full-size lightbox. */

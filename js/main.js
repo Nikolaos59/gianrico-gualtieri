@@ -103,21 +103,31 @@ if (menu && links) {
   schedule(2200);
 })();
 
-/* Show one viewport-centered preview after a deliberate hover pause. */
+/* Show the centered preview only after the pointer settles. */
 (() => {
   const mosaic = document.querySelector('.atelier-mosaic');
   const desktopHover = window.matchMedia('(hover:hover) and (min-width:801px)');
   if (!mosaic || !desktopHover.matches) return;
 
   let activeCard = null;
+  let pendingCard = null;
   let pendingTimer = 0;
+  let lastX = 0;
+  let lastY = 0;
   const closePreview = () => {
     activeCard?.classList.remove('mosaic-preview-active');
     activeCard = null;
     document.querySelector('.mosaic-hover-preview')?.remove();
   };
-  const showPreview = (card, source) => {
+  const cancelPending = () => {
+    window.clearTimeout(pendingTimer);
+    pendingTimer = 0;
+    pendingCard = null;
+  };
+  const showPreview = (card) => {
     if (!card.matches(':hover')) return;
+    const source = card.querySelector('img');
+    if (!source) return;
     activeCard = card;
     card.classList.add('mosaic-preview-active');
     const preview = document.createElement('div');
@@ -134,23 +144,42 @@ if (menu && links) {
     preview.append(figure);
     document.body.append(preview);
   };
+  const schedulePreview = (card) => {
+    cancelPending();
+    closePreview();
+    pendingCard = card;
+    pendingTimer = window.setTimeout(() => {
+      const settledCard = pendingCard;
+      pendingTimer = 0;
+      pendingCard = null;
+      if (settledCard) showPreview(settledCard);
+    }, 1000);
+  };
 
   mosaic.querySelectorAll('.mosaic-item').forEach((card) => {
     card.addEventListener('pointerenter', (event) => {
       if (event.pointerType === 'touch') return;
-      const source = card.querySelector('img');
-      if (!source) return;
-      window.clearTimeout(pendingTimer);
-      closePreview();
-      pendingTimer = window.setTimeout(() => {
-        pendingTimer = 0;
-        showPreview(card, source);
-      }, 1000);
+      lastX = event.clientX;
+      lastY = event.clientY;
+      schedulePreview(card);
     });
   });
+  mosaic.addEventListener('pointermove', (event) => {
+    if (event.pointerType === 'touch') return;
+    const moved = Math.hypot(event.clientX - lastX, event.clientY - lastY) > 4;
+    if (!moved) return;
+    lastX = event.clientX;
+    lastY = event.clientY;
+    const card = event.target.closest?.('.mosaic-item');
+    if (!card) {
+      cancelPending();
+      closePreview();
+      return;
+    }
+    schedulePreview(card);
+  });
   mosaic.addEventListener('pointerleave', () => {
-    window.clearTimeout(pendingTimer);
-    pendingTimer = 0;
+    cancelPending();
     closePreview();
   });
 })();

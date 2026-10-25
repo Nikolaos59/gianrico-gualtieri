@@ -136,9 +136,9 @@ if (menu && links) {
       preview.append(figure);
       document.body.append(preview);
     });
-    card.addEventListener('pointerleave', () => {
-      document.querySelector('.mosaic-hover-preview')?.remove();
-    });
+  });
+  mosaic.addEventListener('pointerleave', () => {
+    document.querySelector('.mosaic-hover-preview')?.remove();
   });
 })();
 

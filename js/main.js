@@ -189,16 +189,23 @@ if (menu && links) {
   const mosaic = document.querySelector('.atelier-mosaic');
   if (!mosaic) return;
 
-  const isGerman = document.documentElement.lang === 'de';
+  const lang = document.documentElement.lang;
+  const labels = {
+    fr: { dialog: 'Photo de l’atelier agrandie', close: 'Fermer', zoom: 'Agrandir la photo : ' },
+    de: { dialog: 'Atelierfoto vergrößert', close: 'Schließen', zoom: 'Foto vergrößern: ' },
+    en: { dialog: 'Enlarged studio photograph', close: 'Close', zoom: 'Enlarge photo: ' },
+    it: { dialog: 'Fotografia dello studio ingrandita', close: 'Chiudi', zoom: 'Ingrandisci la foto: ' },
+    nl: { dialog: 'Atelierfoto vergroot', close: 'Sluiten', zoom: 'Foto vergroten: ' }
+  }[lang] || { dialog: 'Photo de l’atelier agrandie', close: 'Fermer', zoom: 'Agrandir la photo : ' };
   const dialog = document.createElement('dialog');
   dialog.className = 'mosaic-lightbox';
-  dialog.setAttribute('aria-label', isGerman ? 'Atelierfoto vergrößert' : 'Photo de l’atelier agrandie');
+  dialog.setAttribute('aria-label', labels.dialog);
   dialog.innerHTML = '<button class="mosaic-lightbox-close" type="button" autofocus></button><figure><img alt=""><figcaption></figcaption></figure>';
   const closeButton = dialog.querySelector('.mosaic-lightbox-close');
   const largeImage = dialog.querySelector('img');
   const caption = dialog.querySelector('figcaption');
   closeButton.textContent = '×';
-  closeButton.setAttribute('aria-label', isGerman ? 'Schließen' : 'Fermer');
+  closeButton.setAttribute('aria-label', labels.close);
   document.body.append(dialog);
 
   const open = (card) => {
@@ -215,7 +222,7 @@ if (menu && links) {
     const image = card.querySelector('img');
     card.setAttribute('role', 'button');
     card.setAttribute('tabindex', '0');
-    card.setAttribute('aria-label', (isGerman ? 'Foto vergrößern: ' : 'Agrandir la photo : ') + (image?.alt || ''));
+    card.setAttribute('aria-label', labels.zoom + (image?.alt || ''));
     card.addEventListener('keydown', (event) => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();

@@ -110,6 +110,38 @@ if (menu && links) {
   schedule(2200);
 })();
 
+/* Show a viewport-centered preview without moving the source photo. */
+(() => {
+  const mosaic = document.querySelector('.atelier-mosaic');
+  const desktopHover = window.matchMedia('(hover:hover) and (min-width:801px)');
+  if (!mosaic || !desktopHover.matches) return;
+
+  mosaic.querySelectorAll('.mosaic-item').forEach((card) => {
+    card.addEventListener('pointerenter', (event) => {
+      if (event.pointerType === 'touch') return;
+      document.querySelector('.mosaic-hover-preview')?.remove();
+      const source = card.querySelector('img');
+      if (!source) return;
+      const preview = document.createElement('div');
+      preview.className = 'mosaic-hover-preview';
+      preview.setAttribute('aria-hidden', 'true');
+      const figure = document.createElement('figure');
+      const image = source.cloneNode(false);
+      image.src = source.currentSrc || source.src;
+      image.removeAttribute('srcset');
+      image.removeAttribute('loading');
+      const caption = document.createElement('figcaption');
+      caption.textContent = card.querySelector('figcaption')?.textContent.trim() || source.alt;
+      figure.append(image, caption);
+      preview.append(figure);
+      document.body.append(preview);
+    });
+    card.addEventListener('pointerleave', () => {
+      document.querySelector('.mosaic-hover-preview')?.remove();
+    });
+  });
+})();
+
 /* Open workshop photographs in an accessible full-size lightbox. */
 (() => {
   const mosaic = document.querySelector('.atelier-mosaic');

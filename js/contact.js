@@ -29,7 +29,7 @@
     ].join("\n");
 
     if (status) status.textContent = copy.ready;
-    window.location.href = "mailto:" + encodeURIComponent(recipient) +
+    window.location.href = "mailto:" + recipient +
       "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
   });
 })();

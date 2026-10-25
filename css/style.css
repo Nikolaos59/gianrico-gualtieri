@@ -821,3 +821,5 @@
 .contact-success{margin:0 0 28px;padding:18px 22px;border:1px solid var(--gold);background:var(--bg2);color:var(--text)}
 .contact-honeypot{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important}
 @media(max-width:600px){.contact-fields{grid-template-columns:1fr}.contact-submit{min-height:52px}}
+
+.contact-layout{grid-template-columns:minmax(0,860px);justify-content:center}

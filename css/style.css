@@ -857,5 +857,8 @@
 
 
 /* Reference paintings beside the old-master biographies */
-.master-figure{margin:20px 0 24px}
+.master-content{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,34%);gap:clamp(24px,5vw,64px);align-items:start}
+.master-copy h3{margin-top:0}
+.master-figure{margin:0;display:flex;justify-content:flex-end;align-items:flex-start}
+@media(max-width:720px){.master-content{grid-template-columns:1fr;gap:20px}.master-figure{justify-content:flex-start}}
 .master-image{display:block;width:auto;height:auto;max-width:100%;max-height:none;object-fit:unset;object-position:initial;background:transparent;border:1px solid var(--line);padding:0;box-shadow:0 14px 34px rgba(0,0,0,.22)}

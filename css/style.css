@@ -828,3 +828,16 @@
  .atelier-mosaic .mosaic-item:hover img{transform:scale(1.4)!important;transform-origin:center}
  .atelier-mosaic .mosaic-item:hover figcaption{transform:rotate(-1deg) scale(1)!important}
 }
+
+
+/* Social links shared across all language editions */
+.social-footer{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.social-footer-label{color:var(--text,#eee)}
+.social-pending{color:var(--muted);font-size:12px;line-height:1.5}
+.social-card{align-self:stretch;display:flex;flex-direction:column;justify-content:center}
+.social-intro{color:var(--muted);line-height:1.7}
+.social-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.social-link{display:inline-flex;align-items:center;min-height:42px;padding:9px 15px;border:1px solid var(--line);color:var(--text,#eee);text-decoration:none;transition:border-color .2s,color .2s}
+.social-link:hover,.social-link:focus-visible{border-color:var(--gold);color:var(--gold)}
+.social-link:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media(max-width:800px){.social-footer{align-items:flex-start;flex-direction:column;gap:3px}.social-card{min-height:240px}}

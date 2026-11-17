@@ -816,3 +816,15 @@
 .situated-gallery-grid figcaption{padding:12px 2px 0;color:var(--muted);font-size:13px;line-height:1.5}
 @media(max-width:800px){.situated-gallery{padding:65px 20px 0}.situated-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}}
 @media(max-width:480px){.situated-gallery-grid{grid-template-columns:1fr}.situated-image-frame{aspect-ratio:5/4}}
+
+/* Make hover magnification act on artwork photos, not only their captions. */
+.situated-gallery-grid figure{position:relative;z-index:0}
+.situated-gallery-grid figure:hover{z-index:2}
+.situated-gallery-grid figure:hover .situated-image-frame img,
+.situated-gallery-grid .situated-image-frame:focus-visible img{transform:scale(1.4)!important}
+.situated-gallery-grid figure:hover figcaption{transform:none}
+@media(hover:hover) and (min-width:801px){
+ .atelier-mosaic .mosaic-item:hover{z-index:80!important}
+ .atelier-mosaic .mosaic-item:hover img{transform:scale(1.4)!important;transform-origin:center}
+ .atelier-mosaic .mosaic-item:hover figcaption{transform:rotate(-1deg) scale(1)!important}
+}

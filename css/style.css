@@ -858,4 +858,4 @@
 
 /* Reference paintings beside the old-master biographies */
 .master-figure{margin:20px 0 24px}
-.master-image{display:block;width:min(100%,460px);max-height:380px;object-fit:contain;object-position:left center;background:#141210;border:1px solid var(--line);padding:6px;box-shadow:0 14px 34px rgba(0,0,0,.22)}
+.master-image{display:block;width:auto;height:auto;max-width:100%;max-height:none;object-fit:unset;object-position:initial;background:transparent;border:1px solid var(--line);padding:0;box-shadow:0 14px 34px rgba(0,0,0,.22)}

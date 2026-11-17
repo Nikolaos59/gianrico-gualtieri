@@ -7,6 +7,6 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-Content-Signal: search=yes, ai-input=no, ai-train=no
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 
 Sitemap: https://gianrico-gualtieri.nikobackland.workers.dev/sitemap.xml

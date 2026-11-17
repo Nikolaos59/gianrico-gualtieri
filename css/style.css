@@ -836,8 +836,21 @@
 .social-pending{color:var(--muted);font-size:12px;line-height:1.5}
 .social-card{align-self:stretch;display:flex;flex-direction:column;justify-content:center}
 .social-intro{color:var(--muted);line-height:1.7}
-.social-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-.social-link{display:inline-flex;align-items:center;min-height:42px;padding:9px 15px;border:1px solid var(--line);color:var(--text,#eee);text-decoration:none;transition:border-color .2s,color .2s}
-.social-link:hover,.social-link:focus-visible{border-color:var(--gold);color:var(--gold)}
+.social-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.social-link{display:inline-flex;align-items:center;gap:11px;min-height:58px;padding:8px 16px 8px 9px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.025);color:var(--text,#eee);text-decoration:none;transition:transform .2s,border-color .2s,background .2s}
+.social-link:hover,.social-link:focus-visible{transform:translateY(-2px);border-color:var(--gold);background:rgba(255,255,255,.06)}
 .social-link:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-@media(max-width:800px){.social-footer{align-items:flex-start;flex-direction:column;gap:3px}.social-card{min-height:240px}}
+.social-icon{width:40px;height:40px;display:grid;place-items:center;flex:none;border-radius:50%;color:#fff}
+.social-icon svg{display:block;width:21px;height:21px;fill:currentColor}
+.social-link--facebook .social-icon{background:#1877f2}
+.social-link--instagram .social-icon{background:linear-gradient(140deg,#f9ce34 0%,#ee2a7b 48%,#6228d7 100%)}
+.social-link--instagram .social-icon svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.social-link--instagram .social-icon .instagram-dot{fill:currentColor;stroke:none}
+.social-name{font-size:14px;letter-spacing:.02em}
+.social-arrow{margin-left:3px;color:var(--muted);font-size:14px;transition:transform .2s,color .2s}
+.social-link:hover .social-arrow{transform:translate(2px,-2px);color:var(--gold)}
+.footer-inner .social-link{min-height:38px;padding:4px 11px 4px 5px;gap:8px;font-size:12px}
+.footer-inner .social-icon{width:28px;height:28px}
+.footer-inner .social-icon svg{width:16px;height:16px}
+.footer-inner .social-name{font-size:12px}
+@media(max-width:800px){.social-footer{align-items:flex-start;flex-direction:column;gap:7px}.social-card{min-height:240px}.footer-inner .social-footer{align-items:flex-start}}

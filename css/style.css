@@ -862,3 +862,8 @@
 .master-figure{margin:0;display:flex;justify-content:flex-end;align-items:flex-start}
 @media(max-width:720px){.master-content{grid-template-columns:1fr;gap:20px}.master-figure{justify-content:flex-start}}
 .master-image{display:block;width:auto;height:auto;max-width:100%;max-height:none;object-fit:unset;object-position:initial;background:transparent;border:1px solid var(--line);padding:0;box-shadow:0 14px 34px rgba(0,0,0,.22)}
+
+.master--image-left .master-content{grid-template-columns:minmax(220px,34%) minmax(0,1fr)}
+.master--image-left .master-figure{grid-column:1;grid-row:1;justify-content:flex-start}
+.master--image-left .master-copy{grid-column:2;grid-row:1}
+@media(max-width:720px){.master--image-left .master-content{grid-template-columns:1fr}.master--image-left .master-copy,.master--image-left .master-figure{grid-column:1;grid-row:auto}}

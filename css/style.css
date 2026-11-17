@@ -854,3 +854,8 @@
 .footer-inner .social-icon svg{width:16px;height:16px}
 .footer-inner .social-name{font-size:12px}
 @media(max-width:800px){.social-footer{align-items:flex-start;flex-direction:column;gap:7px}.social-card{min-height:240px}.footer-inner .social-footer{align-items:flex-start}}
+
+
+/* Reference paintings beside the old-master biographies */
+.master-figure{margin:20px 0 24px}
+.master-image{display:block;width:min(100%,460px);max-height:380px;object-fit:contain;object-position:left center;background:#141210;border:1px solid var(--line);padding:6px;box-shadow:0 14px 34px rgba(0,0,0,.22)}

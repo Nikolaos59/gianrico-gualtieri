@@ -878,3 +878,19 @@
 @media(max-width:640px){.association-card{grid-template-columns:1fr;gap:20px;text-align:center}.association-logo{width:min(68vw,210px)}}
 
 .site-credit-link{color:var(--gold);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}.site-credit-link:hover{color:var(--text)}.site-credit-link:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+
+
+/* Dedicated artwork gallery */
+.artwork-gallery.container{padding-top:70px;padding-bottom:32px}
+.artwork-gallery-intro{max-width:780px;margin:0 0 38px}
+.artwork-gallery-intro>p:last-child{max-width:700px;color:var(--muted)}
+.artwork-gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.5vw,34px)}
+.artwork-gallery-grid figure{margin:0;min-width:0}
+.artwork-gallery-frame{display:flex;align-items:center;justify-content:center;overflow:hidden;aspect-ratio:4/5;background:var(--bg2);border:1px solid rgba(184,155,109,.26);cursor:zoom-in}
+.artwork-gallery-frame img{display:block;width:100%;height:100%;object-fit:contain;transition:transform .45s ease}
+.artwork-gallery-frame:hover img,.artwork-gallery-frame:focus-visible img{transform:scale(1.035)}
+.artwork-gallery-frame:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.artwork-gallery-grid figcaption{padding:12px 2px 0;color:var(--muted);font-size:14px}
+.gallery-contact{padding-top:30px}
+@media(max-width:900px){.artwork-gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.artwork-gallery-grid{grid-template-columns:1fr}}

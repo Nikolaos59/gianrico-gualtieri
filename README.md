@@ -8,4 +8,4 @@ Portfolio statique multilingue de Gianrico Gualtieri.
 - Italien : `it/`
 - Néerlandais : `nl/`
 
-Chaque version présente l’accueil, l’artiste, la peinture ancienne et le contact. Les photographies et illustrations sont dans `assets/images/`. Le site est publié sur Cloudflare Workers ; `robots.txt` et `sitemap.xml` sont à la racine.
+Chaque version présente l’accueil, l’artiste, la peinture ancienne, une galerie et le contact. Les photographies et illustrations sont dans `assets/images/`. Le site est publié sur Cloudflare Workers ; `robots.txt` et `sitemap.xml` sont à la racine.
